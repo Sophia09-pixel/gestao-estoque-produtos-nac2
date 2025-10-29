@@ -95,7 +95,7 @@ COMO EXECUTAR O PROJETO
 -----------------------------------------------------
 
 1. Clone o repositório:
-   git clone <URL_DO_REPOSITORIO>
+   git clone
    cd nome-do-projeto
 
 2. Configure a conexão com o banco no appsettings.json:
