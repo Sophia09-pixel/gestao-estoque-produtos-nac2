@@ -1,8 +1,5 @@
-SISTEMA DE GESTÃO DE ESTOQUE - README
+## DESCRIÇÃO DO PROJETO
 
-=====================================================
-DESCRIÇÃO DO PROJETO
-=====================================================
 Este projeto implementa um sistema de gestão de estoque para produtos perecíveis e não perecíveis. Permite controle de entrada e saída de mercadorias, controle de lotes e validade, e geração de relatórios sobre o estoque.
 
 Tecnologias utilizadas:
@@ -10,9 +7,8 @@ Tecnologias utilizadas:
 - MySQL (banco de dados)
 - Swagger (para testes de endpoints)
 
------------------------------------------------------
-REGRAS DE NEGÓCIO IMPLEMENTADAS
------------------------------------------------------
+## REGRAS DE NEGÓCIO IMPLEMENTADAS
+
 1. Produto
    - Cada produto possui SKU (identificador único), nome, categoria, preço unitário, quantidade mínima em estoque e data de criação.
    - Produtos perecíveis devem obrigatoriamente ter lote e data de validade.
@@ -28,11 +24,11 @@ REGRAS DE NEGÓCIO IMPLEMENTADAS
    - Consulta de produtos que vencerão em até 7 dias.
    - Cálculo do valor total do estoque (quantidade × preço unitário).
 
------------------------------------------------------
-DIAGRAMA DE ENTIDADES (TEXTO)
------------------------------------------------------
+
+## DIAGRAMA DE ENTIDADES (TEXTO)
+
 Produto
----------
+
 SKU (PK)
 Nome
 Categoria (PERECIVEL / NAO_PERECIVEL)
@@ -42,7 +38,7 @@ QuantidadeAtual
 DataCriacao
 
 MovimentacaoEstoque
-------------------
+
 Id (PK)
 ProdutoSKU (FK -> Produto.SKU)
 Tipo (ENTRADA / SAIDA)
@@ -51,12 +47,12 @@ DataMovimentacao
 Lote (obrigatório para perecíveis)
 DataValidade (obrigatório para perecíveis)
 
------------------------------------------------------
-EXEMPLOS DE REQUISIÇÕES API
------------------------------------------------------
+## EXEMPLOS DE REQUISIÇÕES API
+
 
 1. Cadastro de Produto
 POST /api/produto
+``json
 {
   "sku": "12345",
   "nome": "Leite Integral",
@@ -64,9 +60,11 @@ POST /api/produto
   "precoUnitario": 6.50,
   "quantidadeMinima": 10
 }
+``
 
-2. Registrar Movimentação de Entrada
+3. Registrar Movimentação de Entrada
 POST /api/movimentacao
+``json
 {
   "produtoSKU": "12345",
   "tipo": "ENTRADA",
@@ -75,24 +73,28 @@ POST /api/movimentacao
   "dataValidade": "2025-11-10",
   "dataMovimentacao": "2025-10-29"
 }
+``
 
-3. Registrar Movimentação de Saída
+4. Registrar Movimentação de Saída
 POST /api/movimentacao
+
+``json
 {
   "produtoSKU": "12345",
   "tipo": "SAIDA",
   "quantidade": 20,
   "dataMovimentacao": "2025-10-29"
 }
+``
 
-4. Relatórios
+5. Relatórios
 - Valor total do estoque: GET /api/relatorio/valor-total
 - Produtos abaixo do mínimo: GET /api/relatorio/abaixo-minimo
 - Produtos perecíveis vencendo em até 7 dias: GET /api/relatorio/vencendo-7dias
 
------------------------------------------------------
-COMO EXECUTAR O PROJETO
------------------------------------------------------
+
+## COMO EXECUTAR O PROJETO
+
 
 1. Clone o repositório:
    git clone
